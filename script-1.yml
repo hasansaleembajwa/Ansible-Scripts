@@ -1,0 +1,22 @@
+#!/bin/bash
+#################################################################################################
+# This script is used for installation of Oracle Java then make it the first alternative java
+# echo "Installing Oracle JDK 1.$JDKVER". curl,tar,unzip,telnet
+# User Must be          - root
+#
+# User must be having root user access to execute the script.
+# Check if you execute the script as root user
+#
+#
+#######################################################################################
+- name: Scripts run installation of Oracle Java
+  shell:
+    echo "Setting up SWAP file"
+    sudo mkdir /swap
+    sudo dd if=/dev/zero of=/swap/swapfile1 bs=1M count=2092
+    sudo chmod 600 /swap/swapfile1
+    sudo mkswap /swap/swapfile1
+    sudo swapon /swap/swapfile1
+    echo "/swap/swapfile1 swap swap defaults 0 0" | sudo tee -a /etc/fstab
+    sudo swapon -s
+
