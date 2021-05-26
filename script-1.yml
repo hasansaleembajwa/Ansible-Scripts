@@ -11,12 +11,13 @@
 #######################################################################################
 - name: Scripts run installation of Oracle Java
   shell:
-    echo "Setting up SWAP file"
-    sudo mkdir /swap
-    sudo dd if=/dev/zero of=/swap/swapfile1 bs=1M count=2092
-    sudo chmod 600 /swap/swapfile1
-    sudo mkswap /swap/swapfile1
-    sudo swapon /swap/swapfile1
-    echo "/swap/swapfile1 swap swap defaults 0 0" | sudo tee -a /etc/fstab
-    sudo swapon -s
+    yum install binutils -y
+    yum install compat-libstdc++-33 -y
+    yum install compat-libstdc++-33.i686 -y
+    yum install gcc -y
+    yum install gcc-c++ -y
+    yum install glibc -y
+    yum install glibc.i686 -y
+    yum install glibc-devel -y
+
 
